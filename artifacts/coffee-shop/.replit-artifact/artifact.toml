@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Coffee Shop"
+description = "A warm, interactive showcase website for a neighborhood coffee shop, featuring its coffee menu, café story, and visit information without online ordering."
+version = "1.0.0"
+id = "artifacts/coffee-shop"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22964
+
+[services.development]
+run = "pnpm --filter @workspace/coffee-shop run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/coffee-shop", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/coffee-shop/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22964"
+BASE_PATH = "/"

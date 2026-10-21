@@ -1,0 +1,1 @@
+- [GitHub publishing authorization](github-publishing-authorization.md) — verify GitHub write access; a connected indicator may not mean this workspace's Git tools can push.
